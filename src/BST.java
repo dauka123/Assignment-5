@@ -16,6 +16,9 @@ public class BST <K extends Comparable<K>, V>{
     public int size() {
         return size;
     }
+    /*
+      put - method to inserts a key-value
+    */
     public void put(K key, V val){
         root = put(root, key, val);
     }
@@ -37,7 +40,9 @@ public class BST <K extends Comparable<K>, V>{
         }
         return node;
     }
-
+    /*
+      get - method to get the value associated with a given key
+    */
     public V get (K key){
         return get(root, key);
     }
@@ -57,7 +62,9 @@ public class BST <K extends Comparable<K>, V>{
             return node.val;
         }
     }
-
+    /*
+      delete - method deletes a key-value
+    */
     public void delete(K key){
         root = delete(root, key);
     }
@@ -89,14 +96,18 @@ public class BST <K extends Comparable<K>, V>{
         }
         return node;
     }
-
+    /*
+      findMin - finds the min value
+    */
     private Node findMin(Node node) {
         while (node.left != null) {
             node = node.left;
         }
         return node;
     }
-
+    /*
+      iterator - returns an iterable collection of nodes
+    */
     public Iterable<Node> iterator() {
         List<Node> nodes = new ArrayList<>();
         inorderTraversal(root, nodes);
