@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class BST <K extends Comparable<K>, V>{
     private Node root;
     private int size;
@@ -9,6 +12,9 @@ public class BST <K extends Comparable<K>, V>{
             this.key = key;
             this.val = val;
         }
+    }
+    public int size() {
+        return size;
     }
     public void put(K key, V val){
         root = put(root, key, val);
@@ -91,7 +97,17 @@ public class BST <K extends Comparable<K>, V>{
         return node;
     }
 
-    public Iterable<K> iterator(){
-
+    public Iterable<Node> iterator() {
+        List<Node> nodes = new ArrayList<>();
+        inorderTraversal(root, nodes);
+        return nodes;
+    }
+    private void inorderTraversal(Node node, List<Node> nodes) {
+        if (node == null) {
+            return;
+        }
+        inorderTraversal(node.left, nodes);
+        nodes.add(node);
+        inorderTraversal(node.right, nodes);
     }
 }
