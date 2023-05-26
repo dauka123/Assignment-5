@@ -62,6 +62,24 @@ public class BST <K extends Comparable<K>, V>{
             return node.val;
         }
     }
+
+    public boolean contain(K key){
+         return contains(root, key);
+    }
+
+    private boolean contains(Node node, K key ){
+        if (node == null){
+            return false;
+        }
+        if (node.left != null){
+            contains(node.left,key);
+        }
+        if (node.right != null){
+            contains(node.right,key);
+        }
+        return true;
+    }
+
     /*
       delete - method deletes a key-value
     */
